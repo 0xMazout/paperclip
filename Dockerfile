@@ -11,7 +11,7 @@ RUN apt-get update \
   && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list \
   && apt-get update \
   && apt-get install -y --no-install-recommends gh \
-  && rm -rf /var/lib/apt/lists/* \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && corepack enable
 
 # Modify the existing node user/group to have the specified UID/GID to match host user
